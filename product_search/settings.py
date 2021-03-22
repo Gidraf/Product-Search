@@ -24,7 +24,7 @@ import os
 SECRET_KEY = 'kx9oz2btecl9)ifvb=3jff%9a%4@#j=n@__3mofm14a8*%+3a&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
