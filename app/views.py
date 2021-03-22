@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.template import loader
+from .models import Product
+from django.db.models import Q
 
 def index(request):
-    # latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    template = loader.get_template('index.html')
-    # context = {
-    #     'latest_question_list': latest_question_list,
-    # }
-    return render(request,"index.html")
+    if len(request.GET) > 0:
+        query_text = request.GET.get("query")
+        if query_text:
+            result = Product.objects.all().filter(Q(product_name__icontains=query_text) | Q(product_description__icontains=query_text) | Q(product_price__icontains=query_text))
+            return render(request,"search.html",context={"products":result})
+    return render(request,"search.html")

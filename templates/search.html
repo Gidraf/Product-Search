@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{%if products%}
+<form style="margin: 1rem 15%; width: 60%;" method="GET" action="/">
+    <div class="input-group mb-3">
+        <input name="query" type="text" class="form-control" placeholder="Search a product" aria-label="Product Search" aria-describedby="basic-addon2">
+
+        <button class="btn btn-primary btn-group-lg" type="submit" ><span class="" id="basic-addon2">Search</span></button>
+      </div>
+</form>
+<ul class="list-group list-group-flush" style="width: 60%; margin: 1rem 15%;">
+{% for p in products %}
+<div  class="list-group-item"style="margin-top:.1rem; display:flex; border-radius:5px">
+    <img src="{{p.image_url}}" style="width: 15%;"/>
+    <div style="margin-left:1rem;">
+    <li style="list-style: none; margin-top: .5rem;">{{p.product_name}}</li>
+    <li style="list-style: none; margin-top: .5rem;">{{p.product_description}}</li>
+    <li style="list-style: none; margin-top: .5rem;">{{p.product_price}}</li>
+    </div>
+</div>
+{%endfor%}
+</ul>
+{%else%}
+        <form style="margin: 25% auto; width: 60%;" method="GET" action="/">
+            <div class="input-group mb-3">
+                <input name="query" type="text" class="form-control" placeholder="Search a product" aria-label="Product Search" aria-describedby="basic-addon2">
+                <button class="btn btn-primary btn-group-lg" type="submit" ><span class="" id="basic-addon2">Search</span></button>
+              </div>
+        </form>
+{%endif%}
+{% endblock %}

@@ -1,6 +1,6 @@
 from .views import index
-from django.urls import path
+from django.urls import path, re_path
 
 urlpatterns = [
-    path('/', index, name="search"),
+    path('', index, name="search"),
 ]
